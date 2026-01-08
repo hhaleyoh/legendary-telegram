@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://cn72sxk4p3bmy"]
+[gd_scene load_steps=10 format=4 uid="uid://cn72sxk4p3bmy"]
 
 [ext_resource type="Texture2D" uid="uid://b1iyyl7v5onf1" path="res://assets/hex_grid.png" id="1_af824"]
 [ext_resource type="Script" uid="uid://bhnrxuv62ju31" path="res://scripts/hex_map_controller.gd" id="2_f5v0i"]
 [ext_resource type="Script" uid="uid://cconvhbiiux2r" path="res://scripts/camera_controller.gd" id="3_f5v0i"]
+[ext_resource type="PackedScene" uid="uid://cmul8j2xk6pb7" path="res://pathfinder_test.tscn" id="4_3yuup"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_af824"]
 vertices = PackedVector2Array(51, 0, 25.5, 47, -25.5, 47, -51, 0, -25.5, -47, 25.5, -47)
@@ -46,11 +47,16 @@ tile_size = Vector2i(102, 94)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_3yuup")
 
-[node name="TileMap" type="TileMapLayer"]
-tile_map_data = PackedByteArray("AAAGAAQAAAABAAAAAAAGAAMAAAACAAAAAAAHAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAGAAIAAAACAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAGAAUAAAABAAAAAAAFAAQAAAABAAAAAAAFAAUAAAABAAAAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAFAAMAAAACAAAAAAAEAAMAAAACAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" node_paths=PackedStringArray("char")]
+tile_map_data = PackedByteArray("AAAGAAQAAAABAAAAAAAGAAMAAAACAAAAAAAHAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAGAAIAAAACAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAGAAUAAAABAAAAAAAFAAQAAAABAAAAAAAFAAUAAAABAAAAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAFAAMAAAACAAAAAAAEAAMAAAACAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAEAAAACAAAAAAAKAAIAAAACAAAAAAAKAAMAAAACAAAAAAALAAIAAAACAAAAAAALAAEAAAACAAAAAAAKAAEAAAACAAAAAAAIAAEAAAABAAAAAAAHAAAAAAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAEAAUAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAACAAUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_8ku03")
 script = ExtResource("2_f5v0i")
+char = NodePath("CharacterBody2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 script = ExtResource("3_f5v0i")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_3yuup")]
+position = Vector2(510, 326)
+scale = Vector2(0.5, 0.5)

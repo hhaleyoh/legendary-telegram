@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmul8j2xk6pb7"]
+
+[ext_resource type="Script" uid="uid://c181l2n0ufw23" path="res://pathfinder_test.gd" id="1_upa33"]
+[ext_resource type="Texture2D" uid="uid://dc3akfulkgf3q" path="res://assets/ship.png" id="2_upa33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyoav"]
+size = Vector2(62, 52)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_upa33")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_upa33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eyoav")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_postprocessing = 1
+simplify_path = true
+debug_enabled = true
