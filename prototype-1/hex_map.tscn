@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=4 uid="uid://cn72sxk4p3bmy"]
+
+[ext_resource type="Texture2D" uid="uid://b1iyyl7v5onf1" path="res://assets/hex_grid.png" id="1_af824"]
+[ext_resource type="Script" uid="uid://bhnrxuv62ju31" path="res://scripts/hex_map_controller.gd" id="2_f5v0i"]
+[ext_resource type="Script" uid="uid://cconvhbiiux2r" path="res://scripts/camera_controller.gd" id="3_f5v0i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_af824"]
+vertices = PackedVector2Array(51, 0, 25.5, 47, -25.5, 47, -51, 0, -25.5, -47, 25.5, -47)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-51, 0, -25.5, -47, 25.5, -47, 51, 0, 25.5, 47, -25.5, 47)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_f5v0i"]
+vertices = PackedVector2Array(51, 0, 25.5, 47, -25.5, 47, -51, 0, -25.5, -47, 25.5, -47)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-51, 0, -25.5, -47, 25.5, -47, 51, 0, 25.5, 47, -25.5, 47)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3yuup"]
+vertices = PackedVector2Array(51, 0, 25.5, 47, -25.5, 47, -51, 0, -25.5, -47, 25.5, -47)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-51, 0, -25.5, -47, 25.5, -47, 51, 0, 25.5, 47, -25.5, 47)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3yuup"]
+texture = ExtResource("1_af824")
+margins = Vector2i(9, 8)
+separation = Vector2i(18, 0)
+texture_region_size = Vector2i(110, 96)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_af824")
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_f5v0i")
+2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3yuup")
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8ku03"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(102, 94)
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_3yuup")
+
+[node name="TileMap" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAGAAQAAAABAAAAAAAGAAMAAAACAAAAAAAHAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAGAAIAAAACAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAGAAUAAAABAAAAAAAFAAQAAAABAAAAAAAFAAUAAAABAAAAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAFAAMAAAACAAAAAAAEAAMAAAACAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_8ku03")
+script = ExtResource("2_f5v0i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3_f5v0i")
